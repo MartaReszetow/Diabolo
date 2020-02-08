@@ -20,7 +20,6 @@ public class MonsterCreationUtil {
             } else {
                 monstersList.add(new Ghul());
             }
-
         }
         return monstersList;
     }

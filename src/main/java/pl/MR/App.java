@@ -42,10 +42,29 @@ public class App {
         Player player = PlayerCreator.createPlayer();
         System.out.println(player);
 
+        List<Monster> monsterList = MonsterCreationUtil.createMonster();
 
+
+        while (player.isAlive()&& monsterList.stream().anyMatch(m->m.isAlive())){
+
+            monsterList.stream().filter(m -> m.isAlive()).findFirst().get().receiveDemage(player.attack());
+            monsterList.stream().filter(m -> m.isAlive()).forEach(singleMonster -> player.receiveDemage(singleMonster.attack()));
+        }
+        System.out.println(monsterList);
+
+        if(player.isAlive()){
+            System.out.println("Congrats, You are alive. You've killed " + monsterList.size() + " monsters");
+        }
+        else{
+            System.out.println("You're dead");
+        }
+
+        System.out.println(player.getHp());
     }
 
 }
+
+
 
 
 

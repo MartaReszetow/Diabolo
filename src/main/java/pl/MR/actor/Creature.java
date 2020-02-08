@@ -5,9 +5,9 @@ import pl.MR.WeaponType;
 public abstract class Creature {
 
     protected int hp;
-   protected boolean alive;
-   protected int strength;
-   protected WeaponType weaponType;
+    protected boolean alive;
+    protected int strength;
+    protected WeaponType weaponType;
 
     public Creature(int hp, boolean alive, int strength, WeaponType weaponType) {
         this.hp = hp;
@@ -15,6 +15,16 @@ public abstract class Creature {
         this.strength = strength;
         this.weaponType = weaponType;
     }
+
+
+    public void receiveDemage(int dmg) {
+        hp -= dmg;
+        if (hp <= 0) {
+            alive = false;
+            System.out.println("received " + dmg + " dmg");
+        }
+    }
+
 
     public int getHp() {
         return hp;
